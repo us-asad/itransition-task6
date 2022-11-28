@@ -111,8 +111,6 @@ export async function getServerSideProps({ req, res }) {
   const messages = await fetchMessages(getCookie("token", { req, res }), getCookie("name", { req, res }));
   const users = await User.find().exec();
 
-  console.log(users);
-
   return {
     props: {
       messages: messages || [],

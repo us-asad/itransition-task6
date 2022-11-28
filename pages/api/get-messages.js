@@ -13,5 +13,5 @@ export default async function handler(req, res) {
   const recivedMessages = await Message.find({ recipient_name: verified.name }).exec();
   const sortedAllMessages = [...sentMessages, ...recivedMessages].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
-  res.status(200).send({ messages: sortedAllMessages });
+  res.status(200).send(JSON.stringify({ messages: sortedAllMessages }));
 }
