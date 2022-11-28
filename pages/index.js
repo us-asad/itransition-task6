@@ -10,6 +10,7 @@ import { fetchMessages } from "utils/functions";
 import axios from "axios";
 import { AutoCompleteInput } from "components";
 import User from "models/User";
+import db from "utils/db";
 
 export default function Home({ messages: msgs, users: usrs }) {
   const router = useRouter();
@@ -108,9 +109,12 @@ export default function Home({ messages: msgs, users: usrs }) {
 }
 
 export async function getServerSideProps({ req, res }) {
-  db.connect();
+  console.log("a1");
+  await db.connect()
   const messages = await fetchMessages(getCookie("token", { req, res }), getCookie("name", { req, res }));
+  console.log("a2");
   const users = await User.find().exec();
+  console.log("a3");
 
   return {
     props: {
