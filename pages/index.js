@@ -108,11 +108,9 @@ export default function Home({ messages: msgs, users: usrs }) {
 }
 
 export async function getServerSideProps({ req, res }) {
-  console.log("a1");
+  db.connect();
   const messages = await fetchMessages(getCookie("token", { req, res }), getCookie("name", { req, res }));
-  console.log("a2");
   const users = await User.find().exec();
-  console.log("a3");
 
   return {
     props: {
