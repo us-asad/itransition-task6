@@ -42,7 +42,7 @@ export default function Home({ messages: msgs, users: usrs }) {
 
   return (
     <div className="custom-container flex justify-center items-center min-h-screen py-10 pb-20">
-      <div className="w-[800px] bg-purple-100 rounded-lg overflow-hidden px-5 pt-3 pb-10">
+      <div className="w-[800px] bg-purple-100 rounded-lg px-5 pt-3 pb-10">
         <div className="flex justify-between items-center pb-2">
           <h1 className="text-[40px] text-purple-700 font-bold">Hoola</h1>
           <button onClick={logout} className="px-3 py-1.5 text-[14px] font-bold bg-red-600 text-white rounded-md">Leave Account</button>
@@ -86,11 +86,9 @@ export default function Home({ messages: msgs, users: usrs }) {
                 <AutoCompleteInput
                   error={errors.recipient_name}
                   registers={register("recipient_name", getRegisterValidation(true, 3, 100))}
+                  items={users?.map(usr => ({ id: usr._id, label: usr.name }))}
                   setValue={value => setValue("recipient_name", value)}
                   value={watch("recipient_name")}
-                  control={control}
-                  name="recipient_name"
-                  items={users?.map(usr => ({ id: usr._id, label: usr.name }))}
                 />
                 {errors.recipient_name ? <span className="text-red-600 text-[14px]">{errors.recipient_name?.message}</span> : null}
               </div>
