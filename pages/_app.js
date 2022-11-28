@@ -3,7 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import "styles/send-btn.scss"
 import 'styles/globals.css'
 import { getCookie } from "cookies-next";
-import { Loader } from 'subcomponents';
+import { Loader } from 'components';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 

@@ -3,7 +3,7 @@ import axios from "axios";
 import { setCookie } from "cookies-next";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { Spinner } from "subcomponents";
+import { Spinner } from "components";
 
 export default function Auth() {
   const { register, formState: { errors }, handleSubmit } = useForm();

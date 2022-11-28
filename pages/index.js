@@ -3,7 +3,7 @@ import MessageComponent from "components/Message";
 import { deleteCookie, getCookie } from "cookies-next"
 import { useRouter } from "next/router"
 import Script from "next/script"
-import { SendBtn } from "subcomponents"
+import { SendBtn } from "components"
 import { useForm } from "react-hook-form";
 import { getRegisterValidation } from "utils/functions";
 import { fetchMessages } from "utils/functions";
@@ -109,12 +109,9 @@ export default function Home({ messages: msgs, users: usrs }) {
 }
 
 export async function getServerSideProps({ req, res }) {
-  console.log("a1");
   await db.connect()
   const messages = await fetchMessages(getCookie("token", { req, res }), getCookie("name", { req, res }));
-  console.log("a2");
   const users = await User.find().exec();
-  console.log("a3");
 
   return {
     props: {
