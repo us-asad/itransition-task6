@@ -34,10 +34,12 @@ export default function Home({ messages: msgs, users: usrs }) {
   }
 
   useEffect(() => {
-    setInterval(async () => {
+    const interval = setInterval(async () => {
       const newMessages = await fetchMessages(getCookie("token"), getCookie("name"));
       setMessages(newMessages);
     }, 5000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (

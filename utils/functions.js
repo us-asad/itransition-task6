@@ -21,6 +21,7 @@ export const getRegisterValidation = (required, minLength, maxLength) => {
 }
 
 export const fetchMessages = async (token, name) => {
+  if (!token) return [];
   const res = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/get-messages`, {
     headers: {
       Authorization: `Bearer ${token}`
