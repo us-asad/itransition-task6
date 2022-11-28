@@ -26,6 +26,6 @@ export const fetchMessages = async (token, name) => {
       Authorization: `Bearer ${token}`
     }
   });
-  console.log(res.data)
+
   return res.data?.messages?.map(msg => ({ ...msg, status: msg.sender_name === name ? "to" : "from" }))
 }
